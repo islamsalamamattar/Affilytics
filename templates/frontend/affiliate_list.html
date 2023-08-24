@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}	
+
+{% block title %} affiliates_list {% endblock title %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+	<!-- BEGIN #content -->
+
+	<!-- BEGIN row -->
+	<div class="row">	
+
+		<div class="col-lg-12 col-sm-12">
+			<div class="row">
+				<!-- BEGIN all todos -->
+				<div class="col-12">									
+					<div class="widget-reminder-header bg-inverse " style="color: white;"> Affiliates List</div>			
+					
+					<ul class="widget widget-list inverse-mode">
+						{% for affiliate in affiliates %}
+						<li>
+							<div class="widget-list-container bg-theme">
+                                <div class="widget-list-media contact rounded">
+                                    <img src="{{ affiliate.profile_pic.url }}" alt="">
+                                </div>
+								<div class="widget-list-content">
+									<div class="widget-title">{{ affiliate.first_name }}</div>
+
+									<div class="widget-desc">{{ affiliate.first_name }} {{ affiliate.first_name }} - facebook/{{ affiliate.facebook }} = {{ affiliate.facebook_followers |intcomma |intword }} </div>
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+							
+				</div>
+				<!-- END all todos -->
+			</div>
+		</div>
+	</div>
+
+	<!-- END #content -->
+{% endblock content %}
+
+{% block javascripts %}
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static 'assets/plugins/form/bootstrap-wizard/js/bootstrap-wizard.min.js' %}"></script>
+	<script src="{% static 'assets/js/page/form-wizards.demo.min.js' %}"></script>
+	<script src="{% static 'assets/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			FormWizards.init();
+		});
+	</script>
+
+{% endblock javascripts %}

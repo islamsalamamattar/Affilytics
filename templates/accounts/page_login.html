@@ -1,0 +1,76 @@
+{% extends 'frontend/layouts/base.html' %}	
+
+{% block title %} Login {% endblock title %}
+
+{% block header %} {% endblock header %}
+{% block sidebar %} {% endblock sidebar %}
+{% block content %}
+<!-- BEGIN #content -->
+<!-- BEGIN login -->
+<div class="register inverse-mode">
+	<!-- BEGIN login-cover -->
+	<div class="register-cover"></div>
+	<!-- END login-cover -->
+	<!-- BEGIN login-content -->
+	<div class="register-content">
+		<!-- BEGIN login-brand -->
+		<div class="login-brand">
+			<a href="{% url 'login' %}"><h3 class="m-b-20"><span> Sales Portal</span></h3></a>
+		</div>
+		<!-- END login-brand -->
+
+
+		<!-- BEGIN login-desc -->
+		<p class="m-b-20">Get in touch with your sales database on the go</p>
+		<div class="login-desc">
+			For your protection, please verify your identity.
+		</div>
+		<!-- END login-desc -->
+
+		<div class="card-header">
+
+				{% if msg %}
+					<span class="text-danger">{{ msg | safe }}</span>
+				{% endif %}
+
+
+		</div>
+
+
+		<!-- BEGIN login-form -->
+		<form method="POST" name="login_form">
+			{% csrf_token %}
+			<div class="col-12">
+				<div class="form-group">
+					<label class="control-label">Username</label>
+					<input type="text" class="form-control" name="username" value="" />
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="form-group">
+					<label class="control-label">Password</label>
+					<input type="password" class="form-control" name="password" value="" />
+				</div>
+			</div>
+
+			<div class="m-b-10">
+				<div class="checkbox-inline">
+					<input type="checkbox" id="login-remember-me" value="2"> <label for="login-remember-me">Remember me</label>
+				</div>
+			</div>
+			<a href="#" class="pull-right">Forgot your ID or password?</a>
+			<button type="submit" class="btn btn-primary">Sign In</button>
+		</form>
+		<!-- END login-form -->
+		<div class="m-t-20">
+			Not a member yet? <a href="{% url 'register' %}">Register</a>
+		</div>
+	</div>
+	<!-- END login-content -->
+
+</div>
+<!-- END login -->
+
+			
+		<!-- END #content -->
+{% endblock content %}
